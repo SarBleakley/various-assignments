@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>poke</title>
+</head>
+<body>
+<h1>Welcome, {{ user.alias }}!</h1>
+<br>
+{{ user.pokecount }} people poked you!
+<br>
+<a href='/logout'>Log out</a>
+<br>
+<textarea style="width: 400px; height: 200px;"> 
+			{% for item in request.session.message %}
+				<p>{{ item }}</p>
+			{% endfor %}
+	((list the users who poked you and how many times they poked you))
+	((also list the number of people who poked you))
+</textarea>
+<br>
+People you may want to poke:
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Alias</th>
+		<th>Email Address</th>
+		<th>Poke History</th>
+		<th>Action</th>
+	</tr>
+	{% for poke in pokes %}
+	<tr>
+		<td> {{ poke.alias }} </td>
+		<td> {{ poke.email }} </td>
+		<td> {{ pokecount }} </td>
+		<td> <form action="/poke" method='post'>
+				{% csrf_token %}
+		<input type="submit" value="Poke!">
+		<input type="hidden" name="poke" value="poke" />
+		</form></td>
+	{% endfor %}
+		<tr>
+			<td> {{ user.f_name }} </td>
+			<td> {{ user.alias }} </td>
+			<td> {{ user.email }} </td>
+			<td> {{ pokecount }} </td>
+			<td> 
+			<form action="/poke" method='post'>
+			{% csrf_token %}
+			<input type="submit" value="Poke!">
+			<input type="hidden" name="poke" value="poke" />
+		</form></td>
+	</tr>
+	</tr>
+	</table>
+	poke history shows total number of times person has been poked, clicking poke button increases their poke count
+</body>
+</html>

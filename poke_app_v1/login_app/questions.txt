@@ -1,0 +1,5 @@
+
+where does post go to?
+why is the confirm delete button in the static folder for courses?
+a context dictionary is an excellent shortcut to sending key/value pairs
+metalinguistic awareness
